@@ -45,6 +45,7 @@ describe('InputComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   })
+  // Should Test caluculate method
   it('should calculate',() =>{
     component.isCalculate= true;
     component.calculate();

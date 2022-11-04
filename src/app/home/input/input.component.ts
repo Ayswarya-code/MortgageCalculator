@@ -30,6 +30,7 @@ export class InputComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  //Calculates the payment if forms are valid
   calculate(){
     console.log("tess",this.paymentForm);
     if(this.paymentForm.invalid){

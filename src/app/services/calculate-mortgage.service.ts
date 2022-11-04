@@ -8,7 +8,8 @@ import {  Observable} from 'rxjs';
 export class CalculateMortgageService {
 
   constructor() { }
-
+  
+//Perform monthly payment callculation using formula P[i(i+1)^n]/[(i+1)^n -1]
    calculate(formValues:FormGroup):Observable<number> {
   return new Observable((observer) => {
     let monthlyInterest =(formValues.value.interestRate/100) /12;
