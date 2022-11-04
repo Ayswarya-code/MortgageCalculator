@@ -1,0 +1,66 @@
+<h2>Payment Plan</h2>
+<div class="column">
+<div class="mrgn-tp panel panel-primary sectionWidth ">
+ <form [formGroup]="paymentForm" class="formStyle" (ngSubmit)="calculate()">
+ <div>
+<label for="morgageAmount">Mortgage Amount : </label>
+<span>$</span>
+<input id="morgageAmount" class="custom-width" [ngClass]="{'errorMsg-style': paymentForm['controls']['morgageAmount']['status'] =='INVALID' }"  type="number" min="0" formControlName="morgageAmount">
+</div>
+<br>
+<div>
+<label for="interestRate">Interest Rate :</label>
+<span>%</span>
+<input id="interestRate"class="custom-width"  [ngClass]="{'errorMsg-style': paymentForm['controls']['interestRate']['status'] =='INVALID' }" type="number" min="0" formControlName="interestRate">
+</div>
+<br>
+<div>
+<label for="term">Term (In Years):</label>
+<input id="term"  type="number" [ngClass]="{'errorMsg-style': paymentForm['controls']['term']['status'] =='INVALID' }" min="0" formControlName="term">
+</div>
+<br>
+<div>
+<label for="paymentFrequency">Payment Frequency :</label>
+
+<select  id="paymentFrequency" formControlName="paymentFrequency" >
+    <option value="Monthly" selected>Monthly</option>
+     </select>
+</div>
+<br>
+<div>
+<label for="downPayment">Down Payment :</label>
+<input id="downPayment" [ngClass]="{'errorMsg-style': paymentForm['controls']['downPayment']['status'] =='INVALID' }" type="number" min="0" formControlName="downPayment">
+</div>
+<br>
+ <button mat-raised-button class="label-font button-width"type="submit">CALCULATE</button> 
+ <div *ngIf ="isInvalid" class="error">{{errorMsg}}</div> 
+</form>
+
+</div>
+<div class="sectionWidth">
+    <table class="table-style"  *ngIf="isCalculate">
+        <caption>Calculation Summary</caption>
+       <thead>
+        <tr>
+            <th>Category</th>
+            <th>Term</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+            <td>Number of Payments</td>
+            <td>{{paymentForm.value.term * 12}}</td>
+        </tr>
+        <tr>
+            <td>Principal Amount</td>
+            <td>{{paymentForm.value.morgageAmount - paymentForm.value.downPayment}}</td>
+        </tr>
+        <tr>
+        <td>Monthly Payment</td>
+        <td>{{monthlyPayment}}</td>
+        </tr>   
+    </tbody>
+    </table>
+</div>
+
+</div>
