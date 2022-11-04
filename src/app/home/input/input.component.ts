@@ -37,7 +37,7 @@ export class InputComponent implements OnInit {
     }else{
       this.isInvalid= false;
       this.isCalculate= true;
-    this.calculateMortgageService.calculate(this.paymentForm.value).subscribe(payment=>{
+    this.calculateMortgageService.calculate(this.paymentForm).subscribe(payment=>{
     if(payment){
   this.monthlyPayment = payment;
     }
