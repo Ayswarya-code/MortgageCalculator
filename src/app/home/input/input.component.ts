@@ -32,18 +32,16 @@ export class InputComponent implements OnInit {
   }
   //Calculates the payment if forms are valid
   calculate(){
-    console.log("tess",this.paymentForm);
-    if(this.paymentForm.invalid){
+  if(this.paymentForm.invalid){
       this.isInvalid = true;
     }else{
       this.isInvalid= false;
       this.isCalculate= true;
-    this.calculateMortgageService.calculate(this.paymentForm).subscribe(payment=>{
-    if(payment){
-  this.monthlyPayment = payment;
+      this.calculateMortgageService.calculate(this.paymentForm).subscribe(payment=>{
+  if(payment){
+    this.monthlyPayment = payment;
     }
-  
   })
-    }
-   }
+  }
+  }
 }
